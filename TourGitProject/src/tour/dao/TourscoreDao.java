@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 import tour.dto.TourscoreDto;
 import tour.util.DBUtil;
@@ -76,5 +78,38 @@ public class TourscoreDao {
 		}
 		return result;
 	}
+	
+	  public List<TourscoreDto> getInfo(String contentID){
+	      List<TourscoreDto> list = new LinkedList<>();
+	      Connection conn = DBUtil.getConnection();
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      
+	      String sql = "select * from tourscore where contentid="+"'"+contentID+"'";
+	      
+	      try {
+	         
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()){
+	            list.add(new TourscoreDto(
+	                  rs.getInt("score_num"), 
+	                  rs.getInt("contentid"), 
+	                  rs.getString("id"),
+	                  rs.getDouble("traffic"), 
+	                  rs.getDouble("stay"), 
+	                  rs.getDouble("sisul"), 
+	                  rs.getDouble("food"), 
+	                  rs.getDouble("etc"), 
+	                  rs.getString("assessment")));
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         DBUtil.close(rs, pstmt, conn);
+	      }
+	      return list;
+	   }
 	
 }//end of class
