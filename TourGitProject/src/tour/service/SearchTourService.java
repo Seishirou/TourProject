@@ -22,9 +22,13 @@ public class SearchTourService implements Service {
 	private String cat2Name = null;
 	
 	private static String contentID = "";
+	private static String tourName = "";
 
 	public static String getContentID() {
 		return contentID;
+	}
+	public static String getName(){
+		return tourName;
 	}
 
 	@Override
@@ -88,6 +92,7 @@ public class SearchTourService implements Service {
 		String tourNum = scan.nextLine();
 		System.out.println();
 		this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();
+		this.tourName = list.get(Integer.parseInt(tourNum)-1).getTourName();
 		new MemHistoryInsertService().execute(scan);
 	}
 } // end of class
