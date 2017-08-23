@@ -88,6 +88,6 @@ public class SearchTourService implements Service {
 		String tourNum = scan.nextLine();
 		System.out.println();
 		this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();
-
+		new MemHistoryInsertService().execute(scan);
 	}
 } // end of class

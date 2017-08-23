@@ -11,7 +11,7 @@ public class TourscoreInsertService implements Service {
 	public void execute(Scanner sc) {
 		// TODO Auto-generated method stub
 		int score_num = TourscoreDao.getInstance().selectNum()+1;
-//		int contentid = ;
+//		String contentid = 
 		String email = new LoginService().getEmail();
 		double traffic = sc.nextDouble();
 		double stay = sc.nextDouble();

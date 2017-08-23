@@ -4,11 +4,9 @@ public class MemHistoryDto {
 
 	private int recordnum;
 	private String email="";
-	private int contentid;
+	private String contentid;
 	
-	
-	
-	public MemHistoryDto(int recordnum, String email, int contentid) {
+	public MemHistoryDto(int recordnum, String email, String contentid) {
 		super();
 		this.recordnum = recordnum;
 		this.email = email;
@@ -27,10 +25,10 @@ public class MemHistoryDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getContentid() {
+	public String getContentid() {
 		return contentid;
 	}
-	public void setContentid(int contentid) {
+	public void setContentid(String contentid) {
 		this.contentid = contentid;
 	}
 

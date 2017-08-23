@@ -36,11 +36,15 @@ public class TourscoreDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				temp=rs.getInt("max(score_num)");
+			}else {
+				temp=0;
 			}
 			System.out.println(temp);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			DBUtil.close(pstmt, conn);
 		}
 		return temp;
 	}
