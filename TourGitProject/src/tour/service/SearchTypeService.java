@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import tour.dao.TourDao;
-import tour.dto.TourType;
+import tour.dto.TourTypeDto;
 
 public class SearchTypeService implements Service{
 	
@@ -20,7 +20,7 @@ public class SearchTypeService implements Service{
 		System.out.println("\t관광 타입 선택");
 		System.out.println(" ================================");
 		
-		List<TourType> typeList = TourDao.searchTourType();
+		List<TourTypeDto> typeList = TourDao.searchTourType();
 		int size = typeList.size();
 		for (int i = 0; i < typeList.size(); i++) {
 			if(!"x".equals( typeList.get(i).getTypeCode().trim() ))

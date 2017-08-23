@@ -1,6 +1,6 @@
 package tour.dto;
 
-public class Cat2 {
+public class Cat2Dto {
 	@Override
 	public String toString() {
 		return "Cat2 [code=" + code + ", name=" + name + ", cat1Code=" + cat1Code + "]";
@@ -10,7 +10,7 @@ public class Cat2 {
 	String name;
 	String cat1Code;
 	
-	public Cat2(String code, String name, String cat1Code) {
+	public Cat2Dto(String code, String name, String cat1Code) {
 		super();
 		this.code = code;
 		this.name = name;

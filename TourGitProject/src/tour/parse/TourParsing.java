@@ -25,7 +25,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import tour.dto.Tour;
+import tour.dto.TourDto;
 import tour.util.DBUtil;
 import tour.util.URLUtil;
 
@@ -33,7 +33,7 @@ public class TourParsing {
 	
 	public static void parsing(){
 		
-		List<Tour> list = new LinkedList<>();
+		List<TourDto> list = new LinkedList<>();
 		
 		try {
 			Properties prop = new Properties();
@@ -51,20 +51,20 @@ public class TourParsing {
 	        
 	        if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
 				
-				// DocumentBuilder »ý¼ºÇØÁÖ´Â ÆÑÅä¸®
+				// DocumentBuilder ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ä¸®
 				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 				
-				// DocumentBuilder »ý¼º
+				// DocumentBuilder ï¿½ï¿½ï¿½ï¿½
 				DocumentBuilder builder = factory.newDocumentBuilder();
 				
-				Document document = builder.parse(new DataInputStream(conn.getInputStream())); 	// DOM ÆÄ½Ì -> ¸Þ¸ð¸®¿¡ ¹®¼­ Æ®¸® ±¸Ãà
-				Element root = document.getDocumentElement(); 	// ·çÆ®
-				NodeList nodeList = root.getElementsByTagName("item"); // ·çÆ®ÀÇ ÀÚ½Äµé
+				Document document = builder.parse(new DataInputStream(conn.getInputStream())); 	// DOM ï¿½Ä½ï¿½ -> ï¿½Þ¸ð¸®¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				Element root = document.getDocumentElement(); 	// ï¿½ï¿½Æ®
+				NodeList nodeList = root.getElementsByTagName("item"); // ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ú½Äµï¿½
 				for (int i = 0; i < nodeList.getLength(); i++) {
 					Node node = nodeList.item(i);
 					if( node.getNodeType() == Node.ELEMENT_NODE ){
 						Element e = (Element)node;
-						Node contentID = e.getElementsByTagName("contentid").item(0); // ÃßÃâ : ÇØ´ç ÅÂ±×¸í °¡Áø ¿¤¸®¸ÕÆ®¸¦ ¹ÝÈ¯
+						Node contentID = e.getElementsByTagName("contentid").item(0); // ï¿½ï¿½ï¿½ï¿½ : ï¿½Ø´ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯
 						Node tourName = e.getElementsByTagName("title").item(0);
 						Node addr = e.getElementsByTagName("addr1").item(0);
 						Node tel = e.getElementsByTagName("tel").item(0);
@@ -103,7 +103,7 @@ public class TourParsing {
 						}
 						
 						
-						list.add( new Tour(
+						list.add( new TourDto(
 								strContentID,
 								strtourName,
 								strAddr,
@@ -142,7 +142,7 @@ public class TourParsing {
 
 	}
 	
-	public static void insert(List<Tour> list){
+	public static void insert(List<TourDto> list){
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		String sql = "insert into tour2 values(?,?,?,?,?,?,?,?,?)";
@@ -161,7 +161,7 @@ public class TourParsing {
 //			private String cat1Code;
 //			private String cat2Code;
 //			private String typeCode;
-			for(Tour t : list){
+			for(TourDto t : list){
 				pstmt.setString(1, t.getContentID());
 				pstmt.setString(2, t.getTourName());
 				pstmt.setString(3, t.getAddr());
@@ -175,7 +175,7 @@ public class TourParsing {
 				result = pstmt.executeUpdate();
 			}
 			
-			System.out.println(result+"Çà ¿Ï·á");
+			System.out.println(result+"ï¿½ï¿½ ï¿½Ï·ï¿½");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

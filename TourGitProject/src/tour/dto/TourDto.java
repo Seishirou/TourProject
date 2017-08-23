@@ -1,6 +1,6 @@
 package tour.dto;
 
-public class Tour {
+public class TourDto {
 	private String contentID;
 	private String tourName;
 	private String addr;
@@ -64,7 +64,7 @@ public class Tour {
 	public void setTypeCode(String typeCode) {
 		this.typeCode = typeCode;
 	}
-	public Tour(String contentID, String tourName, String addr, String tel, String areaCode, String sigunguCode,
+	public TourDto(String contentID, String tourName, String addr, String tel, String areaCode, String sigunguCode,
 			String cat1Code, String cat2Code, String typeCode) {
 		super();
 		this.contentID = contentID;

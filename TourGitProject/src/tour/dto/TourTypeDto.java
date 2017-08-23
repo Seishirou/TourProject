@@ -1,9 +1,9 @@
 package tour.dto;
 
-public class TourType {
+public class TourTypeDto {
 	private String typeCode;
 	private String typeName;
-	public TourType(String typeCode, String typeName) {
+	public TourTypeDto(String typeCode, String typeName) {
 		super();
 		this.typeCode = typeCode;
 		this.typeName = typeName;

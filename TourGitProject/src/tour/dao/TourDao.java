@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import tour.dto.Area;
-import tour.dto.Cat1;
-import tour.dto.Cat2;
-import tour.dto.Sigungu;
-import tour.dto.Tour;
-import tour.dto.TourType;
+import tour.dto.AreaDto;
+import tour.dto.Cat1Dto;
+import tour.dto.Cat2Dto;
+import tour.dto.SigunguDto;
+import tour.dto.TourDto;
+import tour.dto.TourTypeDto;
 import tour.util.DBUtil;
 
 public class TourDao {
 	
-	public static List<Area> searchArea() {
-		List<Area> list = new LinkedList<>();
+	public static List<AreaDto> searchArea() {
+		List<AreaDto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -30,7 +30,7 @@ public class TourDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new Area(rs.getString("area_code"),rs.getString("area_name")));
+				list.add(new AreaDto(rs.getString("area_code"),rs.getString("area_name")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -40,8 +40,8 @@ public class TourDao {
 		return list;
 	} // end of searchArea();
 	
-	public static List<Sigungu> searchSigungu(String areaCode) {
-		List<Sigungu> list = new LinkedList<>();
+	public static List<SigunguDto> searchSigungu(String areaCode) {
+		List<SigunguDto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -53,7 +53,7 @@ public class TourDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new Sigungu(rs.getString("sigungu_code"),
+				list.add(new SigunguDto(rs.getString("sigungu_code"),
 						rs.getString("sigungu_name"),
 						rs.getString("area_code")));
 			}
@@ -65,8 +65,8 @@ public class TourDao {
 		return list;
 	} // end of searchSigungu();
 	
-	public static List<Cat1> searchCat1(){
-		List<Cat1> list = new LinkedList<>();
+	public static List<Cat1Dto> searchCat1(){
+		List<Cat1Dto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -78,7 +78,7 @@ public class TourDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new Cat1( rs.getString("cat1_code"),
+				list.add(new Cat1Dto( rs.getString("cat1_code"),
 						rs.getString("cat1_name") ) );
 			}
 		} catch (SQLException e) {
@@ -89,8 +89,8 @@ public class TourDao {
 		return list;
 	}
 	
-	public static List<Cat2> searchCat2(String cat1Code){
-		List<Cat2> list = new LinkedList<>();
+	public static List<Cat2Dto> searchCat2(String cat1Code){
+		List<Cat2Dto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -102,7 +102,7 @@ public class TourDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new Cat2(rs.getString("cat2_code"),
+				list.add(new Cat2Dto(rs.getString("cat2_code"),
 						rs.getString("cat2_name"),
 						rs.getString("cat1_code")));
 			}
@@ -114,8 +114,8 @@ public class TourDao {
 		return list;
 	}
 	
-	public static List<TourType> searchTourType(){
-		List<TourType> list = new LinkedList<>();
+	public static List<TourTypeDto> searchTourType(){
+		List<TourTypeDto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -127,7 +127,7 @@ public class TourDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				list.add(new TourType( rs.getString("type_code"),
+				list.add(new TourTypeDto( rs.getString("type_code"),
 						rs.getString("type_name") ) );
 			}
 		} catch (SQLException e) {
@@ -138,8 +138,8 @@ public class TourDao {
 		return list;
 	}
 	
-	public static List<Tour> searchTour(String areaCode, String sigunguCode, String typeCode, String cat1Code, String cat2Code){
-		List<Tour> list = new LinkedList<>();
+	public static List<TourDto> searchTour(String areaCode, String sigunguCode, String typeCode, String cat1Code, String cat2Code){
+		List<TourDto> list = new LinkedList<>();
 		
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
@@ -170,7 +170,7 @@ public class TourDao {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
-				list.add(new Tour(
+				list.add(new TourDto(
 						rs.getString("contentid"),
 						rs.getString("tour_name"),
 						rs.getString("addr"),

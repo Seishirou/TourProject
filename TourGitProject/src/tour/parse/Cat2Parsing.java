@@ -26,8 +26,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import tour.dto.Cat1;
-import tour.dto.Cat2;
+import tour.dto.Cat1Dto;
+import tour.dto.Cat2Dto;
 import tour.util.DBUtil;
 import tour.util.URLUtil;
 
@@ -37,7 +37,7 @@ public class Cat2Parsing {
 
 	public static void parsing(String cat1Code) {
 		
-		List<Cat2> list = new LinkedList<>();
+		List<Cat2Dto> list = new LinkedList<>();
 		
 		try {
 			Properties prop = new Properties();
@@ -71,7 +71,7 @@ public class Cat2Parsing {
 						Node code = e.getElementsByTagName("code").item(0); // ���� : �ش� �±׸� ���� ������Ʈ�� ��ȯ
 						Node name = e.getElementsByTagName("name").item(0);
 						
-						list.add( new Cat2( code.getFirstChild().getTextContent(),
+						list.add( new Cat2Dto( code.getFirstChild().getTextContent(),
 								name.getFirstChild().getTextContent(),cat1Code));
 					}
 				}
@@ -101,7 +101,7 @@ public class Cat2Parsing {
 		
 	}
 	
-	public static void insert(List<Cat2> list){
+	public static void insert(List<Cat2Dto> list){
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		String sql = "insert into cat2 values(?,?,?)";
@@ -111,7 +111,7 @@ public class Cat2Parsing {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			for(Cat2 c : list){
+			for(Cat2Dto c : list){
 				pstmt.setString(1, c.getCat1Code());
 				pstmt.setString(2, c.getCode());
 				pstmt.setString(3, c.getName());

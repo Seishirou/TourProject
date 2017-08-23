@@ -1,6 +1,6 @@
 package tour.dto;
 
-public class Cat1 {
+public class Cat1Dto {
 	private String code;
 	private String name;
 	
@@ -22,7 +22,7 @@ public class Cat1 {
 	public String toString() {
 		return "Cat1 [code=" + code + ", name=" + name + "]";
 	}
-	public Cat1(String code, String name) {
+	public Cat1Dto(String code, String name) {
 		super();
 		this.code = code;
 		this.name = name;

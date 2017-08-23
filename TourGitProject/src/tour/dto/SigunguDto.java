@@ -1,6 +1,6 @@
 package tour.dto;
 
-public class Sigungu {
+public class SigunguDto {
 	private String sigunguCode;
 	private String sigunguName;
 	private String areaCode;
@@ -22,7 +22,7 @@ public class Sigungu {
 	public void setAreaCode(String areaCode) {
 		this.areaCode = areaCode;
 	}
-	public Sigungu(String sigunguCode, String sigunguName, String areaCode) {
+	public SigunguDto(String sigunguCode, String sigunguName, String areaCode) {
 		super();
 		this.sigunguCode = sigunguCode;
 		this.sigunguName = sigunguName;

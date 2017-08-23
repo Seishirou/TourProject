@@ -1,34 +1,35 @@
 package tour.dto;
 
 public class AreaDto {
-
-	private String area_code="";
-	private String area_name="";
 	
-	public AreaDto(String area_code,String area_name) {
+	private String areaCode;
+	private String areaName;
+	
+	public AreaDto(String areaCode, String areaName) {
 		super();
-		this.area_code = area_code;
-		this.area_name = area_name;
+		this.areaCode = areaCode;
+		this.areaName = areaName;
 	}
 
-	public String getArea_code() {
-		return area_code;
+	public String getAreaCode() {
+		return areaCode;
 	}
-	public void setArea_code(String area_code) {
-		this.area_code = area_code;
+
+	public void setAreaCode(String areaCode) {
+		this.areaCode = areaCode;
 	}
-	public String getArea_name() {
-		return area_name;
+
+	public String getAreaName() {
+		return areaName;
 	}
-	public void setArea_name(String area_name) {
-		this.area_name = area_name;
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
 	}
 
 	@Override
 	public String toString() {
-		return "[Area] : area_code = " + area_code + "\t area_name = " + area_name;
+		return "Area [areaCode=" + areaCode + ", areaName=" + areaName + "]";
 	}
 	
-	
-	
-}// end of class
+}

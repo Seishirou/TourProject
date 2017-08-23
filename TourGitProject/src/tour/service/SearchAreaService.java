@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import tour.dao.TourDao;
-import tour.dto.Area;
-import tour.dto.Sigungu;
+import tour.dto.AreaDto;
+import tour.dto.SigunguDto;
 
 public class SearchAreaService implements Service{
 	
@@ -23,7 +23,7 @@ public class SearchAreaService implements Service{
 		System.out.println(" ================================");
 		int index = 0;
 		
-		List<Area> areaList = TourDao.searchArea();
+		List<AreaDto> areaList = TourDao.searchArea();
 		for (int i = 0; i < areaList.size(); i++) {
 			if(!"x".equals( areaList.get(i).getAreaCode().trim() ))
 			System.out.printf("%2d : %s\n",(i+1),areaList.get(i).getAreaName());
@@ -41,7 +41,7 @@ public class SearchAreaService implements Service{
 		System.out.println("\t시/군/구 검색");
 		System.out.println(" ================================");
 		
-		List<Sigungu> sigunguList = TourDao.searchSigungu(areaCode);
+		List<SigunguDto> sigunguList = TourDao.searchSigungu(areaCode);
 		int size = sigunguList.size();
 		for (int i = 0; i < sigunguList.size() ; i++) {
 			if(!"x".equals( sigunguList.get(i).getSigunguCode().trim() ))

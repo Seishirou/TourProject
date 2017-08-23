@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import tour.dao.TourDao;
-import tour.dto.Tour;
+import tour.dto.TourDto;
 
 public class SearchTourService implements Service {
 	private String areaCode = null;
@@ -29,40 +29,6 @@ public class SearchTourService implements Service {
 		System.out.println(" ********************************");
 		System.out.println("\t관광 조회 서비스");
 		System.out.println(" ********************************");
-//
-//		int count = 0;
-//		
-//		while(count<3){
-//
-//			
-//			System.out.print("  ��ȣ ���� > ");
-//			selectNum = scan.nextLine();
-//			switch (selectNum) {
-//			case "1":
-//				SearchAreaService sa = new SearchAreaService();
-//				sa.excute(scan);
-//				map = sa.getArea();
-//				areaCode = map.get("areaCode");
-//				sigunguCode = map.get("sigunguCode");
-//				count++;
-//				break;
-//			case "2":
-//				SearchTypeService st = new SearchTypeService();
-//				st.excute(scan);
-//				map = st.getTypeCode();
-//				typeCode = map.get("typeCode");
-//				count++;
-//				break;
-//			case "3":
-//				SearchCategoryService sc = new SearchCategoryService();
-//				sc.excute(scan);
-//				map = sc.getCatCode();
-//				cat1Code = map.get("cat1Code");
-//				cat2Code = map.get("cat2Code");
-//				count++;
-//				break;
-//			}
-//		}
 		
 		SearchAreaService sa = new SearchAreaService();
 		sa.execute(scan);
@@ -93,14 +59,14 @@ public class SearchTourService implements Service {
 							"  분류 1   : "+cat1Name+"\n"+
 							"  분류 2   : "+cat2Name);
 		
-		List<Tour> list = TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code);
-		Iterator<Tour> it = list.iterator();
+		List<TourDto> list = TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code);
+		Iterator<TourDto> it = list.iterator();
 		
 		if(list.size()==0){
 			System.out.println("검색 결과가 없습니다.");
 		}else {
 			while(it.hasNext()){
-				Tour t = it.next();
+				TourDto t = it.next();
 				System.out.println(
 				"------------------------------------------------\n"+
 				"관광지명 : " + t.getTourName() +"\n"+

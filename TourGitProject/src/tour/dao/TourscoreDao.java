@@ -8,18 +8,18 @@ import java.sql.SQLException;
 import tour.dto.TourscoreDto;
 import tour.util.DBUtil;
 
-public class TourscoreInsertDao {
+public class TourscoreDao {
 
 	//싱글톤
-	private static TourscoreInsertDao dao;
+	private static TourscoreDao dao;
 	
-	private TourscoreInsertDao() {
+	private TourscoreDao() {
 		super();
 	}
 	
-	public static TourscoreInsertDao getInstance() {
+	public static TourscoreDao getInstance() {
 		if(dao == null)
-			dao = new TourscoreInsertDao();
+			dao = new TourscoreDao();
 		return dao;
 	}
 	//싱클톤 End
