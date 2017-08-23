@@ -7,6 +7,12 @@ import java.util.Scanner;
 import tour.dao.LoginDao;
 
 public class LoginService implements Service{
+	
+	private String email;
+
+	public String getEmail() {
+		return email;
+	}
 
 	@Override
 	public void execute(Scanner scan) {
@@ -14,7 +20,7 @@ public class LoginService implements Service{
 		while(true){
 			System.out.println("===============================================");
 			System.out.print("E-Mail 입력 : ");
-			String email = scan.nextLine();
+			this.email = scan.nextLine();
 			System.out.println("===============================================");
 			System.out.print("비밀번호 입력 : ");
 			String pwd = scan.nextLine();
