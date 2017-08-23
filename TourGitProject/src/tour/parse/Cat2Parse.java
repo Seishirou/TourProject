@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +30,6 @@ import org.xml.sax.SAXException;
 import tour.dto.Cat1Dto;
 import tour.dto.Cat2Dto;
 import tour.util.DBUtil;
-import tour.util.URLUtil;
 
 
 
@@ -51,7 +51,10 @@ public class Cat2Parse {
 			urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("30", "UTF-8"));
 			urlBuilder.append("&" + URLEncoder.encode("cat1","UTF-8") + "=" + URLEncoder.encode(cat1Code, "UTF-8")); // cat1���� �߰���
 			
-			HttpURLConnection conn = URLUtil.getConnection(urlBuilder);
+			URL url = new URL(urlBuilder.toString());
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    conn.setRequestMethod("GET");
+		    conn.setRequestProperty("Content-type", "application/json");
 	        
 	        if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
 				
