@@ -10,10 +10,11 @@ public class MemHistoryInsertService implements Service{
 	@Override
 	public void execute(Scanner sc) {
 		
-		int recordnum = MemHistoryDao.getInstance().selectNum();
-		String email=new LoginService().getEmail();
-		String contentid = new SearchTourService().getContentID();
-		
+		int recordnum = MemHistoryDao.getInstance().selectNum()+1;
+		String email=LoginService.getEmail();
+		String contentid = SearchTourService.getContentID();
+		System.out.println("Email : "+email);
+		System.out.println("Contentid : "+contentid);
 		int result = MemHistoryDao.getInstance().insert(new MemHistoryDto(recordnum, email, contentid));
 		if(result != 0) {
 			System.out.println("회원History Data 추가 성공");
