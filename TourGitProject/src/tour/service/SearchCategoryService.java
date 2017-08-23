@@ -33,6 +33,7 @@ public class SearchCategoryService implements Service{
 			
 		}
 		System.out.println(size+" : 선택안함");
+		System.out.println(" ================================");
 		System.out.print(" 분류1 을 선택하세요 > ");
 		this.cat1Code = scan.nextLine();
 		System.out.println();
@@ -57,6 +58,7 @@ public class SearchCategoryService implements Service{
 			System.out.println((i+1)+" : "+cat2List.get(i).getName());
 		}
 		System.out.println(size+" : 선택안함");
+		System.out.println(" ================================");
 		System.out.print(" 분류2 를 선택하세요 > ");
 		this.cat2Code = scan.nextLine();
 		System.out.println();

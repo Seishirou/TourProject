@@ -1,10 +1,13 @@
 package tour.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import tour.dao.TourDao;
+import tour.dto.Tour;
 
 public class SearchTourService implements Service {
 	private String areaCode = null;
@@ -83,18 +86,43 @@ public class SearchTourService implements Service {
 		cat2Code = map.get("cat2Code");
 		cat2Name = map.get("cat2Name");
 		
-		System.out.println("선택항목 : "+areaName+"/"+sigunguName+"/"+typeName+"/"+cat1Name+"/"+cat2Name);
+		System.out.println("  <선택항목>\n"+
+							"  시/도      : "+areaName+"\n"+
+							"  시/군/구 : "+sigunguName+"\n"+
+							"  관광타입 : "+typeName+"\n"+
+							"  분류 1   : "+cat1Name+"\n"+
+							"  분류 2   : "+cat2Name);
 		
-		TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
-		.forEach(t -> {
-			System.out.println(
-					"------------------------------------------------\n"+
-					"관광지명 : " + t.getTourName() +"\n"+
-					"상세주소 : " + t.getAddr() +"\n"+
-					"전화번호 : "+t.getTel() +"\n"+
-					"------------------------------------------------\n"
-					);
-		});
+		List<Tour> list = TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code);
+		Iterator<Tour> it = list.iterator();
+		
+		if(list.size()==0){
+			System.out.println("검색 결과가 없습니다.");
+		}else {
+			while(it.hasNext()){
+				Tour t = it.next();
+				System.out.println(
+				"------------------------------------------------\n"+
+				"관광지명 : " + t.getTourName() +"\n"+
+				"상세주소 : " + t.getAddr() +"\n"+
+				"전화번호 : "+t.getTel() +"\n"+
+				"------------------------------------------------\n"
+				);
+			}
+		}
+		
+		
+		
+//		TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
+//		.forEach(t -> {
+//			System.out.println(
+//					"------------------------------------------------\n"+
+//					"관광지명 : " + t.getTourName() +"\n"+
+//					"상세주소 : " + t.getAddr() +"\n"+
+//					"전화번호 : "+t.getTel() +"\n"+
+//					"------------------------------------------------\n"
+//					);
+//		});
 
 	}
 

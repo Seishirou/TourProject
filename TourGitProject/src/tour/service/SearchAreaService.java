@@ -29,6 +29,7 @@ public class SearchAreaService implements Service{
 			System.out.printf("%2d : %s\n",(i+1),areaList.get(i).getAreaName());
 			
 		}
+		System.out.println(" ================================");
 		System.out.print(" 시/도 를 선택하세요 > ");
 		this.areaCode = scan.nextLine();
 		System.out.println();
@@ -47,6 +48,7 @@ public class SearchAreaService implements Service{
 			System.out.printf("%2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
 		}
 		System.out.printf("%2d : %s\n",size,"선택안함");
+		System.out.println(" ================================");
 		System.out.print(" 시/군/구 를 선택하세요 > ");
 		this.sigunguCode = scan.nextLine();
 		System.out.println();
