@@ -6,6 +6,7 @@ import tour.service.AreaInsertService;
 import tour.service.JoinService;
 import tour.service.LoginService;
 import tour.service.SearchTourService;
+import tour.service.SelectScanService;
 
 public class TourTest {
 	public static void main(String[] args) {
@@ -28,13 +29,22 @@ public class TourTest {
 		case "1":
 			new LoginService().execute(sc);
 			//new AreaInsertService().execute(sc);
+			switch (new SelectScanService().select(sc)) {
+			case "1":
+				new SearchTourService().execute(sc);
+				break;
+
+			default:
+				System.out.println("바른 숫자를 입력하여 주세요.");
+				break;
+			}
 			break;
-		case "2":
-//			new TourscoreInsertDao().selectNum();
-			break;
-		case "3":
-			new SearchTourService().execute(sc);
-			break;
+//		case "2":
+////			new TourscoreInsertDao().selectNum();
+//			break;
+//		case "3":
+//			new SearchTourService().execute(sc);
+//			break;
 
 		default:
 			break;

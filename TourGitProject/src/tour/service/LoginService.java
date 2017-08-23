@@ -8,9 +8,9 @@ import tour.dao.LoginDao;
 
 public class LoginService implements Service{
 	
-	private String email;
+	private static String email;
 
-	public String getEmail() {
+	public static String getEmail() {
 		return email;
 	}
 
@@ -29,7 +29,8 @@ public class LoginService implements Service{
 				if(!rs.next()){
 					System.out.println("등록된 ID가 없거나 비밀번호가 다릅니다");
 				} else {
-					System.out.println(rs.getString("name") + "님 환영합니다");
+					this.email = rs.getString("name");
+					System.out.println(email + "님 환영합니다");
 					return;
 				}
 			} catch (SQLException e) {

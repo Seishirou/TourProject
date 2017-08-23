@@ -21,9 +21,9 @@ public class SearchTourService implements Service {
 	private String cat2Code = null;
 	private String cat2Name = null;
 	
-	private String contentID = null;
+	private static String contentID = "";
 
-	public String getContentID() {
+	public static String getContentID() {
 		return contentID;
 	}
 

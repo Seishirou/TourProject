@@ -61,8 +61,8 @@ public class MemHistoryDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, m.getRecordnum());
-			pstmt.setString(2, m.getContentid());
-			pstmt.setInt(3, m.getRecordnum());
+			pstmt.setString(2, m.getEmail());
+			pstmt.setString(3, m.getContentid());
 			
 			result = pstmt.executeUpdate();
 			
