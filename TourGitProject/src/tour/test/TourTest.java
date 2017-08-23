@@ -11,7 +11,7 @@ public class TourTest {
 		String select = sc.nextLine();
 		switch (select) {
 		case "1":
-			new AreaInsertService().start(sc);
+			new AreaInsertService().execute(sc);
 			break;
 		case "2":
 //			new TourscoreInsertDao().selectNum();

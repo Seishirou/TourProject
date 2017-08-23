@@ -2,9 +2,8 @@ package tour.service;
 
 import java.util.Scanner;
 
-
-import tour.dao.JoinDAO;
-import tour.dto.Mem;
+import tour.dao.JoinDao;
+import tour.dto.MemDto;
 import tour.exception.MyException;
 
 public class JoinService implements Service {
@@ -23,26 +22,26 @@ public class JoinService implements Service {
 			case 'y':
 				System.out.println("회원가입을 위한 필수입력 항목을 입력해 주십시오");
 				System.out.println("===============================================");
-				String email;
+				String email = "";
 				while (true) {
 					System.out.print("E-Mail 주소 입력 : ");
 					email = scan.nextLine();
-					
-//					int at = 0;
-//					int dot = 0;
-//					for (int i = 0; i < email.length(); i++) {
-//						if (email.charAt(i) == '@') {
-//							at++;
-//						} 
-//						if (email.charAt(i) == '.') {
-//							dot++;
-//						} 
-//					}
-//					if (dot == 1 && at == 1) {
-//						break;
-//					} else {
-//						System.out.println("다시 입력하세요");
-//					}
+
+					 int at = 0;
+					 int dot = 0;
+					 for (int i = 0; i < email.length(); i++) {
+					 if (email.charAt(i) == '@') {
+					 at++;
+					 }
+					 if (email.charAt(i) == '.') {
+					 dot++;
+					 }
+					 }
+					 if (dot == 1 && at == 1) {
+					 break;
+					 } else {
+					 System.out.println("다시 입력하세요");
+					 }
 				}
 
 				System.out.println("===============================================");
@@ -61,7 +60,7 @@ public class JoinService implements Service {
 				System.out.print("핸드폰 번호 입력(-제외) : ");
 				String cellNum = scan.nextLine();
 				try {
-					int result = JoinDAO.insertMem(new Mem(email, pwd, name, birth, addr, cellNum));
+					int result = JoinDao.insertMem(new MemDto(email, pwd, name, birth, addr, cellNum));
 					if (result != 0) {
 						System.out.println("회원가입에 성공했습니다");
 						return;

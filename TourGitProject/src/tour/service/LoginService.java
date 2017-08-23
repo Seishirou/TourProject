@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import tour.dao.LoginDAO;
+import tour.dao.LoginDao;
 
 public class LoginService implements Service{
 
@@ -18,7 +18,7 @@ public class LoginService implements Service{
 			System.out.println("===============================================");
 			System.out.print("비밀번호 입력 : ");
 			String pwd = scan.nextLine();
-			rs = LoginDAO.login(email, pwd);
+			rs = LoginDao.login(email, pwd);
 			try {
 				if(!rs.next()){
 					System.out.println("등록된 ID가 없거나 비밀번호가 다릅니다");

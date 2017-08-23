@@ -27,7 +27,7 @@ public class JoinDao {
 		} catch (SQLException e) {
 			throw new MyException("회원 가입에 실패했습니다");
 		} finally {
-			DBUtil.close(con, cstmt);
+			DBUtil.close(cstmt, con);
 		}
 		return result;
 	}

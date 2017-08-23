@@ -7,7 +7,7 @@ import tour.parse.AreaParse;
 public class AreaInsertService implements Service {
 
 	@Override
-	public void start(Scanner sc) {
+	public void execute(Scanner sc) {
 		// TODO Auto-generated method stub
 		int result = new AreaParse().parse();
 		if(result != 0) {
