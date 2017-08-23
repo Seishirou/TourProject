@@ -20,6 +20,12 @@ public class SearchTourService implements Service {
 	private String cat1Name = null;
 	private String cat2Code = null;
 	private String cat2Name = null;
+	
+	private String contentID = null;
+
+	public String getContentID() {
+		return contentID;
+	}
 
 	@Override
 	public void execute(Scanner scan) {
@@ -60,36 +66,28 @@ public class SearchTourService implements Service {
 							"  분류 2   : "+cat2Name);
 		
 		List<TourDto> list = TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code);
-		Iterator<TourDto> it = list.iterator();
+		
 		
 		if(list.size()==0){
 			System.out.println("검색 결과가 없습니다.");
 		}else {
-			while(it.hasNext()){
-				TourDto t = it.next();
+			int index = 1;
+			for (int j = 0; j < list.size(); j++) {
+				TourDto t = list.get(j);
 				System.out.println(
-				"------------------------------------------------\n"+
-				"관광지명 : " + t.getTourName() +"\n"+
-				"상세주소 : " + t.getAddr() +"\n"+
-				"전화번호 : "+t.getTel() +"\n"+
-				"------------------------------------------------\n"
-				);
+						" <"+(index++)+">\n"+
+						"------------------------------------------------\n"+
+						"관광지명 : " + t.getTourName() +"\n"+
+						"상세주소 : " + t.getAddr() +"\n"+
+						"전화번호 : "+t.getTel() +"\n"+
+						"------------------------------------------------\n"
+						);
 			}
 		}
-		
-		
-		
-//		TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
-//		.forEach(t -> {
-//			System.out.println(
-//					"------------------------------------------------\n"+
-//					"관광지명 : " + t.getTourName() +"\n"+
-//					"상세주소 : " + t.getAddr() +"\n"+
-//					"전화번호 : "+t.getTel() +"\n"+
-//					"------------------------------------------------\n"
-//					);
-//		});
+		System.out.print("상세정보 보기 > ");
+		String tourNum = scan.nextLine();
+		System.out.println();
+		this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();
 
 	}
-
 } // end of class
