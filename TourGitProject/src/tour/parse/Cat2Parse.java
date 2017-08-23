@@ -33,7 +33,7 @@ import tour.util.URLUtil;
 
 
 
-public class Cat2Parsing {
+public class Cat2Parse {
 
 	public static void parsing(String cat1Code) {
 		

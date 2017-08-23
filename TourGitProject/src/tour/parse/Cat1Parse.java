@@ -31,7 +31,7 @@ import tour.util.URLUtil;
 
 
 
-public class Cat1Parsing {
+public class Cat1Parse {
 
 	public static void parsing() {
 		List<Cat1Dto> list = new LinkedList<>();
