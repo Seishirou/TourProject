@@ -24,7 +24,7 @@ public class SearchTourService implements Service {
 		Map<String, String> map = new HashMap<>();
 		
 		System.out.println(" ********************************");
-		System.out.println("\t������ ��ȸ ����");
+		System.out.println("\t관광 조회 서비스");
 		System.out.println(" ********************************");
 //
 //		int count = 0;
@@ -83,15 +83,15 @@ public class SearchTourService implements Service {
 		cat2Code = map.get("cat2Code");
 		cat2Name = map.get("cat2Name");
 		
-		System.out.println("���� �׸� : "+areaName+"/"+sigunguName+"/"+typeName+"/"+cat1Name+"/"+cat2Name);
+		System.out.println("선택항목 : "+areaName+"/"+sigunguName+"/"+typeName+"/"+cat1Name+"/"+cat2Name);
 		
 		TourDAO.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
 		.forEach(t -> {
 			System.out.println(
 					"------------------------------------------------\n"+
-					"�������� : " + t.getTourName() +"\n"+
-					"���ּ� : " + t.getAddr() +"\n"+
-					"��ȭ��ȣ : "+t.getTel() +"\n"+
+					"관광지명 : " + t.getTourName() +"\n"+
+					"상세주소 : " + t.getAddr() +"\n"+
+					"전화번호 : "+t.getTel() +"\n"+
 					"------------------------------------------------\n"
 					);
 		});

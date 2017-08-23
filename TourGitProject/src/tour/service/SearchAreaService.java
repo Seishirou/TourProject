@@ -19,7 +19,7 @@ public class SearchAreaService implements Service{
 	@Override
 	public void execute(Scanner scan) {
 		System.out.println(" ================================");
-		System.out.println("\t��/�� �˻�");
+		System.out.println("\t시/도 검색");
 		System.out.println(" ================================");
 		int index = 0;
 		
@@ -29,7 +29,7 @@ public class SearchAreaService implements Service{
 			System.out.printf("%2d : %s\n",(i+1),areaList.get(i).getAreaName());
 			
 		}
-		System.out.print("��/�� �� �����ϼ��� > ");
+		System.out.print(" 시/도 를 선택하세요 > ");
 		this.areaCode = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(areaCode) - 1;
@@ -37,7 +37,7 @@ public class SearchAreaService implements Service{
 		this.areaName = areaList.get(index).getAreaName();
 		
 		System.out.println(" ================================");
-		System.out.println("\t��/��/�� �˻�");
+		System.out.println("\t시/군/구 검색");
 		System.out.println(" ================================");
 		
 		List<Sigungu> sigunguList = TourDAO.searchSigungu(areaCode);
@@ -46,15 +46,15 @@ public class SearchAreaService implements Service{
 			if(!"x".equals( sigunguList.get(i).getSigunguCode().trim() ))
 			System.out.printf("%2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
 		}
-		System.out.printf("%2d : %s\n",size,"���� ����");
-		System.out.print("��/��/�� �� �����ϼ��� > ");
+		System.out.printf("%2d : %s\n",size,"선택안함");
+		System.out.print(" 시/군/구 를 선택하세요 > ");
 		this.sigunguCode = scan.nextLine();
 		System.out.println();
 				
 		index = Integer.parseInt(sigunguCode) - 1;
 		if( (index+1) == size ){
-			this.sigunguCode = "���þ���";
-			this.sigunguName = "���þ���";
+			this.sigunguCode = "선택안함";
+			this.sigunguName = "선택안함";
 		}else{
 			this.sigunguCode = sigunguList.get(index).getSigunguCode();
 			this.sigunguName = sigunguList.get(index).getSigunguName();

@@ -17,7 +17,7 @@ public class SearchTypeService implements Service{
 	public void execute(Scanner scan) {
 		int index = 0;
 		System.out.println(" ================================");
-		System.out.println("\t���� Ÿ�� ����");
+		System.out.println("\t관광 타입 선택");
 		System.out.println(" ================================");
 		
 		List<TourType> typeList = TourDAO.searchTourType();
@@ -26,14 +26,14 @@ public class SearchTypeService implements Service{
 			if(!"x".equals( typeList.get(i).getTypeCode().trim() ))
 			System.out.println((i+1)+" : "+typeList.get(i).getTypeName());
 		}
-		System.out.println(size+" : ���þ���");
-		System.out.print("���� Ÿ���� �����ϼ��� > ");
+		System.out.println(size+" : 선택안함");
+		System.out.print(" 관광 타입을 선택하세요 > ");
 		this.typeCode = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(typeCode) -1;
 		if((index+1)==size){
-			this.typeCode = "���þ���";
-			this.typeName = "���þ���";
+			this.typeCode = "선택안함";
+			this.typeName = "선택안함";
 		}else {
 			this.typeCode = typeList.get(index).getTypeCode();
 			this.typeName = typeList.get(index).getTypeName();
