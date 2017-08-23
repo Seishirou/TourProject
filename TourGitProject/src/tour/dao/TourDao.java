@@ -15,7 +15,7 @@ import tour.dto.Tour;
 import tour.dto.TourType;
 import tour.util.DBUtil;
 
-public class TourDAO {
+public class TourDao {
 	
 	public static List<Area> searchArea() {
 		List<Area> list = new LinkedList<>();

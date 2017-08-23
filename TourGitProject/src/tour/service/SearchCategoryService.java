@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import tour.dao.TourDAO;
+import tour.dao.TourDao;
 import tour.dto.Cat1;
 import tour.dto.Cat2;
 
@@ -25,7 +25,7 @@ public class SearchCategoryService implements Service{
 		System.out.println("\t분류1 선택");
 		System.out.println(" ================================");
 		
-		List<Cat1> cat1List = TourDAO.searchCat1();
+		List<Cat1> cat1List = TourDao.searchCat1();
 		int size = cat1List.size();
 		for (int i = 0; i < cat1List.size(); i++) {
 			if(!"x".equals( cat1List.get(i).getCode().trim() ))
@@ -50,7 +50,7 @@ public class SearchCategoryService implements Service{
 		System.out.println("\t분류2 선택");
 		System.out.println(" ================================");
 		
-		List<Cat2> cat2List = TourDAO.searchCat2(cat1Code);
+		List<Cat2> cat2List = TourDao.searchCat2(cat1Code);
 		size = cat2List.size();
 		for (int i = 0; i < cat2List.size() ; i++) {
 			if(!"x".equals( cat2List.get(i).getCode().trim() ))

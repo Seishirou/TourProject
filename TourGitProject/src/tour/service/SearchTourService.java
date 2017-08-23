@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import tour.dao.TourDAO;
+import tour.dao.TourDao;
 
 public class SearchTourService implements Service {
 	private String areaCode = null;
@@ -85,7 +85,7 @@ public class SearchTourService implements Service {
 		
 		System.out.println("선택항목 : "+areaName+"/"+sigunguName+"/"+typeName+"/"+cat1Name+"/"+cat2Name);
 		
-		TourDAO.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
+		TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code).stream()
 		.forEach(t -> {
 			System.out.println(
 					"------------------------------------------------\n"+
