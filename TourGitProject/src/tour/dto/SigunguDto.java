@@ -1,6 +1,7 @@
 package tour.dto;
 
 public class SigunguDto {
+	//SigunguDto
 	private String sigunguCode;
 	private String sigunguName;
 	private String areaCode;
