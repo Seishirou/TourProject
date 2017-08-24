@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import tour.dto.TourscoreDto;
+import tour.exception.MyException;
 import tour.util.DBUtil;
 
 public class TourscoreDao {
@@ -42,10 +43,9 @@ public class TourscoreDao {
 				temp=0;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		}finally {
-			DBUtil.close(pstmt, conn);
+			DBUtil.close(rs, pstmt, conn);
 		}
 		return temp;
 	}
@@ -71,7 +71,7 @@ public class TourscoreDao {
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! \n데이터를 잘못 입력하셨습니다.");
 		}finally {
 			DBUtil.close(pstmt, conn);
 		}
@@ -104,7 +104,7 @@ public class TourscoreDao {
 	                  rs.getString("assessment")));
 	         }
 	      } catch (SQLException e) {
-	         e.printStackTrace();
+	    	  throw new MyException("Error! 시스템 오류! \n데이터를 잘못 입력하셨습니다.");
 	      } finally {
 	         DBUtil.close(rs, pstmt, conn);
 	      }

@@ -34,8 +34,9 @@ public class AreaDao {
 //				list.add(a);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new MyException("SQLException Error");
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
+		}finally {
+			DBUtil.close(rs, pstmt, con);
 		}
 		
 		return map;

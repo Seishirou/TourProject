@@ -13,6 +13,7 @@ import tour.dto.Cat2Dto;
 import tour.dto.SigunguDto;
 import tour.dto.TourDto;
 import tour.dto.TourTypeDto;
+import tour.exception.MyException;
 import tour.util.DBUtil;
 
 public class TourDao {
@@ -33,7 +34,7 @@ public class TourDao {
 				list.add(new AreaDto(rs.getString("area_code"),rs.getString("area_name")));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
@@ -58,8 +59,8 @@ public class TourDao {
 						rs.getString("area_code")));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
+			} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
 		return list;
@@ -82,7 +83,7 @@ public class TourDao {
 						rs.getString("cat1_name") ) );
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
@@ -107,7 +108,7 @@ public class TourDao {
 						rs.getString("cat1_code")));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
@@ -131,7 +132,7 @@ public class TourDao {
 						rs.getString("type_name") ) );
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
@@ -183,8 +184,7 @@ public class TourDao {
 						));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MyException("Error! 시스템 오류! 데이터를 읽어 올 수 없습니다.");
 		} finally {
 			DBUtil.close(rs, pstmt, conn);
 		}
