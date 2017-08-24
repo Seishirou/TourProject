@@ -60,7 +60,7 @@ public class TourscoreDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, s.getScore_num());
-			pstmt.setInt(2, s.getContentid());
+			pstmt.setString(2, s.getContentid());
 			pstmt.setString(3, s.getId());
 			pstmt.setDouble(4, s.getTraffic());
 			pstmt.setDouble(5, s.getStay());
@@ -95,7 +95,7 @@ public class TourscoreDao {
 	         while(rs.next()){
 	            list.add(new TourscoreDto(
 	                  rs.getInt("score_num"), 
-	                  rs.getInt("contentid"), 
+	                  rs.getString("contentid"), 
 	                  rs.getString("id"),
 	                  rs.getDouble("traffic"), 
 	                  rs.getDouble("stay"), 

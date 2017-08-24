@@ -2,7 +2,7 @@ package tour.dto;
 
 public class TourscoreDto {
 private int score_num;
-private int contentid;
+private String contentid;
 private String id="";
 private double traffic;
 private double stay;
@@ -11,7 +11,7 @@ private double food;
 private double etc;
 private String assessment="";
 
-public TourscoreDto(int score_num, int contentid, String id, double traffic, double stay, double sisul, double food,
+public TourscoreDto(int score_num, String contentid, String id, double traffic, double stay, double sisul, double food,
 		double etc, String assessment) {
 	super();
 	this.score_num = score_num;
@@ -30,10 +30,10 @@ public int getScore_num() {
 public void setScore_num(int score_num) {
 	this.score_num = score_num;
 }
-public int getContentid() {
+public String getContentid() {
 	return contentid;
 }
-public void setContentid(int contentid) {
+public void setContentid(String contentid) {
 	this.contentid = contentid;
 }
 public String getId() {

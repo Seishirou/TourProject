@@ -11,8 +11,8 @@ public class TourscoreInsertService implements Service {
 	public void execute(Scanner sc) {
 		// TODO Auto-generated method stub
 		int score_num = TourscoreDao.getInstance().selectNum()+1;
-//		String contentid = 
-		String email = new LoginService().getEmail();
+		String contentid = SearchTourService.getContentID();
+		String email = LoginService.getEmail();
 		double traffic = sc.nextDouble();
 		double stay = sc.nextDouble();
 		double sisul = sc.nextDouble();
@@ -20,7 +20,7 @@ public class TourscoreInsertService implements Service {
 		double etc = sc.nextDouble();
 		String assessment = sc.nextLine();
 		
-		int result=TourscoreDao.getInstance().insert(new TourscoreDto(score_num, 5, email, traffic, stay, sisul, food, etc, assessment));
+		int result=TourscoreDao.getInstance().insert(new TourscoreDto(score_num, contentid, email, traffic, stay, sisul, food, etc, assessment));
 		if(result != 0) {
 			System.out.println("입력 성공");
 		}else {
