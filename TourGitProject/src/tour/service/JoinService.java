@@ -6,6 +6,7 @@ import java.util.Scanner;
 import tour.dao.JoinDao;
 import tour.dto.MemDto;
 import tour.exception.MyException;
+import tour.util.RegexUtil;
 
 public class JoinService implements Service {
 
@@ -27,7 +28,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("E-Mail 주소 입력 : ");
 					email = sc.nextLine();
-					if (JoinDao.emailCheck(email)) {
+					if (RegexUtil.emailCheck(email)) {
 						break;
 					} else {
 						System.out.println("이메일 형식이 틀립니다. 다시 입력하세요");
@@ -38,7 +39,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("패스워드 입력(영문+숫자, 6~10자리) : ");
 					pwd = sc.nextLine();
-					if (JoinDao.pwdCheck(pwd)) {
+					if (RegexUtil.pwdCheck(pwd)) {
 						break;
 					} else {
 						System.out.println("영문 + 숫자 또는 6~10자리로 입력하세요");
@@ -49,7 +50,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("이름 입력 : ");
 					name = sc.nextLine();
-					if (JoinDao.nameAndAddrCheck(name)) {
+					if (RegexUtil.nameAndAddrCheck(name)) {
 						break;
 					} else {
 						System.out.println("한글만 입력하세요");
@@ -60,7 +61,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("생년월일 입력(ex20170822) : ");
 					birth = sc.nextLine();
-					if (JoinDao.birthCheck(birth)) {
+					if (RegexUtil.birthCheck(birth)) {
 						break;
 					} else {
 						System.out.println("잘못입력하셨습니다. 다시입력하세요");
@@ -71,7 +72,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("주소 입력(시까지 입력) : ");
 					addr = sc.nextLine();
-					if (JoinDao.nameAndAddrCheck(addr)) {
+					if (RegexUtil.nameAndAddrCheck(addr)) {
 						break;
 					} else {
 						System.out.println("한글만 입력하세요");
@@ -82,7 +83,7 @@ public class JoinService implements Service {
 				while (true) {
 					System.out.print("핸드폰 번호 입력(-제외) : ");
 					cellNum = sc.nextLine();
-					if (JoinDao.cellNumCheck(cellNum)) {
+					if (RegexUtil.cellNumCheck(cellNum)) {
 						break;
 					} else {
 						System.out.println("핸드폰번호 형식이 다릅니다. 다시입력하세요");
