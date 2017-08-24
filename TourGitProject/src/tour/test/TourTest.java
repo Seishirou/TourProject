@@ -12,48 +12,41 @@ import tour.service.TourscoreInsertService;
 
 public class TourTest {
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		System.out.println(
-				"0. 회원가입\n" +
-				"1. 로그인\n" +
-				"2. 관광지 평가\n" +
-				"3. 관광지 조회\n");
-		System.out.print("메뉴를 선택하세요 > ");
-		String select = sc.nextLine();
-		System.out.println();
-		
-		switch (select) {
-		case "0":
-			new JoinService().execute(sc);
-			//new AreaInsertService().execute(sc);
-			break;
-		case "1":
-			new LoginService().execute(sc);
-			//new AreaInsertService().execute(sc);
-			switch (new SelectScanService().select(sc)) {
+		exit : while (true) {
+			System.out.println("1. 회원가입\n" + "2. 로그인\n" + "0. 종료\n");
+			System.out.print("메뉴를 선택하세요 > ");
+			System.out.println();
+			String select = sc.nextLine();
+			switch (select) {
 			case "1":
-				new SearchTourService().execute(sc);
+				new JoinService().execute(sc);
 				break;
 			case "2":
-				new SearchHistoryService().execute(sc);
+				new LoginService().execute(sc);
+				switch (new SelectScanService().select(sc)) {
+				case "1":
+					new SearchTourService().execute(sc);
+					break;
+				case "2":
+					new SearchHistoryService().execute(sc);
+					break;
+
+				default:
+					System.out.println("바른 숫자를 입력하여 주세요.");
+					break;
+				}
 				break;
 
 			default:
+				if("0".equals(select))
+					System.exit(0);
 				System.out.println("바른 숫자를 입력하여 주세요.");
 				break;
 			}
-			break;
-//		case "2":
-////			new TourscoreInsertDao().selectNum();
-//			break;
-//		case "3":
-//			new SearchTourService().execute(sc);
-//			break;
-
-		default:
-			break;
-		}
+			System.out.println();
+		}//while
 		
 	}// end of main
 }// end of class
