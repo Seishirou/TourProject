@@ -22,7 +22,7 @@ public class TourscoreInsertService implements Service {
 		
 		int result=TourscoreDao.getInstance().insert(new TourscoreDto(score_num, 5, email, traffic, stay, sisul, food, etc, assessment));
 		if(result != 0) {
-			System.out.println("학생 데이터 추가 성공");
+			System.out.println("입력 성공");
 		}else {
 			System.out.println("실패");
 		}

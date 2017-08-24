@@ -7,6 +7,7 @@ import tour.service.JoinService;
 import tour.service.LoginService;
 import tour.service.SearchTourService;
 import tour.service.SelectScanService;
+import tour.service.TourscoreInsertService;
 
 public class TourTest {
 	public static void main(String[] args) {
@@ -32,6 +33,9 @@ public class TourTest {
 			switch (new SelectScanService().select(sc)) {
 			case "1":
 				new SearchTourService().execute(sc);
+				break;
+			case "2":
+				new TourscoreInsertService().execute(sc);
 				break;
 
 			default:

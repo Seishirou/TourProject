@@ -29,14 +29,9 @@ public class TourScoreSearchService implements Service{
          etc += t.getEtc();
       }
       
-      System.out.println(
-            "------------------------------------\n"+
-            "교통 : "+traffic/size+"\n"+
-            "숙박 : "+stay/size+"\n"+
-            "시설 : "+sisul/size+"\n"+
-            "음식 : "+food/size+"\n"+
-            "기타 : "+etc/size+"\n"+
-            "------------------------------------"
+      System.out.printf(
+            "------------------------------------\n 교통 : %.1f\n 숙박 : %.1f\n 시설 : %.1f\n 음식 : %.1f\n 기타 : %.1f\n------------------------------------\n",
+            traffic,stay,sisul,food,etc
             );
       if(list.size() < 6){
          for (int i = 0; i < list.size(); i++) {
