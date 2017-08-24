@@ -12,6 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import tour.exception.MyException;
 import tour.util.ConnectURL;
 import tour.util.DBUtil;
 
@@ -31,8 +32,7 @@ public class AreaParse {
 			urlBuilder.append("&"+URLEncoder.encode("MobileOS","UTF-8")+"="+URLEncoder.encode("ETC","UTF-8"));
 			urlBuilder.append("&"+URLEncoder.encode("MobileApp","UTF-8")+"="+URLEncoder.encode("AppTesting","UTF-8"));
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MyException("데이터 Parsing 실패");
 		}
 		Document document = new ConnectURL().run(urlBuilder.toString());
 		String sql = "insert into area values(?,?)";
@@ -41,8 +41,7 @@ public class AreaParse {
 			connection = DBUtil.getConnection();
 			pstmt = connection.prepareStatement(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new MyException("데이터 Parsing 실패");
 		}
 			
 		Element root = document.getDocumentElement();
@@ -59,26 +58,22 @@ public class AreaParse {
 						try {
 							pstmt.setString(j+1, temp.getFirstChild().getTextContent());
 						} catch (DOMException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							throw new MyException("데이터 Parsing 실패 --- DOMException");
 						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							throw new MyException("데이터 Parsing 실패 --- SQLException");
 						}
 					}else {
 						try {
 							pstmt.setString(j+1, "x");
 						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
+							throw new MyException("데이터 Parsing 실패 --- SQLException");
 						}
 					}
 				}
 				try {
 					result = pstmt.executeUpdate();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					throw new MyException("데이터 Parsing 실패 --- SQLException");
 				}
 			}
 		}

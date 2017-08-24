@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import tour.exception.MyException;
 import tour.util.ConnectURL;
 import tour.util.DBUtil;
 
@@ -29,8 +30,7 @@ public class TourParse {
 			urlBuilder
 			.append("&" + URLEncoder.encode("MobileApp", "UTF-8") + "=" + URLEncoder.encode("AppTesting", "UTF-8"));
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new MyException("Error!");
 		}
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -40,7 +40,7 @@ public class TourParse {
 			connection = DBUtil.getConnection();
 			pstmt = connection.prepareStatement(sql);
 		} catch (SQLException e2) {
-			e2.printStackTrace();
+			throw new MyException("Error!");
 		}
 		int result = 0;
 		Element root = document.getDocumentElement(); // 루트
@@ -61,13 +61,13 @@ public class TourParse {
 							pstmt.setString(j+1, "x");
 						}
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						throw new MyException("Error!");
 					}
 				}
 				try {
 					result = pstmt.executeUpdate();
 				} catch (SQLException e1) {
+					throw new MyException("Error!");
 				}
 			}
 		}

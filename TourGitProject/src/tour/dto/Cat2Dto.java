@@ -1,15 +1,11 @@
 package tour.dto;
 
 public class Cat2Dto {
-	@Override
-	public String toString() {
-		return "Cat2 [code=" + code + ", name=" + name + ", cat1Code=" + cat1Code + "]";
-	}
 
 	String code;
 	String name;
 	String cat1Code;
-	
+
 	public Cat2Dto(String code, String name, String cat1Code) {
 		super();
 		this.code = code;
@@ -40,7 +36,10 @@ public class Cat2Dto {
 	public void setCat1Code(String cat1Code) {
 		this.cat1Code = cat1Code;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Cat2 [code=" + code + ", name=" + name + ", cat1Code=" + cat1Code + "]";
+	}
 
 }
