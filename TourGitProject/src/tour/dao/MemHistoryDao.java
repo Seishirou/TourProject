@@ -54,7 +54,6 @@ public class MemHistoryDao {
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		int result = 0;
-		ResultSet rs = null;
 		
 		String sql = "insert into memberhistory values(?,?,?)";
 		
@@ -69,8 +68,8 @@ public class MemHistoryDao {
 			
 		} catch (SQLException e) {
 			throw new MyException("Error! 시스템 오류!\n데이터를 잘못 입력하셨습니다.");
-		}finally {
-			DBUtil.close(rs, pstmt, conn);
+		} finally {
+			DBUtil.close(pstmt, conn);
 		}
 		return result;
 
