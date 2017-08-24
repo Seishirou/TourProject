@@ -87,14 +87,13 @@ public class SearchTourService implements Service {
                   "-------------------------------------------------------------------"
                   );
          }
+         System.out.print(" 회원 평가를 보기 위해 관광지 번호를 입력하세요 : ");
+         String tourNum = scan.nextLine();
+         System.out.println();
+         this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();
+         this.tourName = list.get(Integer.parseInt(tourNum)-1).getTourName();
+         new TourScoreSearchService().execute(scan);
+         new MemHistoryInsertService().execute(scan);
       }
-      System.out.print(" 회원 평가를 보기 위해 관광지 번호를 입력하세요 : ");
-      String tourNum = scan.nextLine();
-      System.out.println();
-      this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();
-      this.tourName = list.get(Integer.parseInt(tourNum)-1).getTourName();
-      new TourScoreSearchService().execute(scan);
-      new MemHistoryInsertService().execute(scan);
-      
    }
 } // end of class
