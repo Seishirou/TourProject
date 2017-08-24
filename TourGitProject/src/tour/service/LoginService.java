@@ -21,8 +21,8 @@ public class LoginService implements Service {
 		// ResultSet rs = null;
 		while (true) {
 			while (true) {
-				System.out.println("===============================================");
-				System.out.print("E-Mail 입력 : ");
+				System.out.println("============================================");
+				System.out.print("E-Mail 주소 입력 : ");
 				this.email = sc.nextLine();
 				if (RegexUtil.emailCheck(email)) {
 					break;
@@ -31,7 +31,7 @@ public class LoginService implements Service {
 				}
 			}
 			while (true) {
-				System.out.println("===============================================");
+				System.out.println("============================================");
 				System.out.print("비밀번호 입력 : ");
 				String pwd = sc.nextLine();
 				try {
@@ -39,7 +39,8 @@ public class LoginService implements Service {
 						System.out.println("등록된 ID가 없거나 비밀번호가 다릅니다");
 						break;
 					} else {
-						System.out.println(this.email + "환영합니다");
+						System.out.println("============================================");
+						System.out.println("      " + this.email + "환영합니다");
 						return;
 					}
 				} catch (NoSuchAlgorithmException e) {

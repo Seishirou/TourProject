@@ -14,11 +14,11 @@ public class TourTest {
 		Scanner sc = new Scanner(System.in);
 		String select = "";
 		while (true) {
-			System.out.println("1. 회원가입\n" + "2. 로그인\n" + "0. 종료\n");
-			System.out.print("메뉴를 선택하세요 > ");
+			System.out.println("==================================");
+			System.out.println("| 1.회원가입 | 2.로그인 | 0.종료 |");
+			System.out.println("==================================");
+			System.out.print("메뉴를 선택하세요 : ");
 			select = sc.nextLine();
-			System.out.println();
-			
 			switch (select) {
 			case "1":
 				new JoinService().execute(sc); // 회원가입 실행
@@ -27,9 +27,10 @@ public class TourTest {
 				new LoginService().execute(sc); // 로그인 실행
 				
 				while(!"0".equals(select)){
-					System.out.println();
-					System.out.println("1. 관광지 조회\n" + "2. 관광지 평가\n"+ "0. 로그 아웃\n");
-					System.out.print("메뉴를 선택하세요 > ");
+					System.out.println("=============================================");
+					System.out.println("| 1.관광지 조회 | 2.관광지 평가 | 0.로그아웃|");
+					System.out.println("=============================================");
+					System.out.print("메뉴를 선택하세요 : ");
 					select = sc.nextLine();
 					System.out.println();
 					switch (select) {

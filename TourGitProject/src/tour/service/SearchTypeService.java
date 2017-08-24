@@ -16,9 +16,9 @@ public class SearchTypeService implements Service{
 	@Override
 	public void execute(Scanner scan) {
 		int index = 0;
-		System.out.println("===============================================");
-		System.out.println(" 관광 타입 선택");
-		System.out.println("===============================================");
+		System.out.println("============================================");
+		System.out.println("               관광 타입 선택               ");
+		System.out.println("============================================");
 		
 		List<TourTypeDto> typeList = TourDao.searchTourType();
 		int size = typeList.size();
@@ -28,7 +28,7 @@ public class SearchTypeService implements Service{
 			System.out.println(" "+(i+1)+" : "+typeList.get(i).getTypeName());
 		}
 		
-		System.out.print(" 관광 타입을 선택하세요 > ");
+		System.out.print(" 관광 타입을 선택하세요 : ");
 		this.typeCode = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(typeCode) -1;

@@ -21,9 +21,9 @@ public class SearchCategoryService implements Service{
 		
 		int index = 0;
 		
-		System.out.println("===============================================");
-		System.out.println(" 분류1 선택");
-		System.out.println("===============================================");
+		System.out.println("============================================");
+		System.out.println("                분류1 선택                  ");
+		System.out.println("============================================");
 		
 		List<Cat1Dto> cat1List = TourDao.searchCat1();
 		int size = cat1List.size();
@@ -34,7 +34,7 @@ public class SearchCategoryService implements Service{
 			
 		}
 		
-		System.out.print(" 분류1 을 선택하세요 > ");
+		System.out.print(" 분류1 을 선택하세요 : ");
 		this.cat1Code = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(cat1Code) - 1;
@@ -47,9 +47,9 @@ public class SearchCategoryService implements Service{
 		}
 
 		
-		System.out.println("===============================================");
-		System.out.println(" 분류2 선택");
-		System.out.println("===============================================");
+		System.out.println("============================================");
+		System.out.println("                분류2 선택                  ");
+		System.out.println("============================================");
 		
 		List<Cat2Dto> cat2List = TourDao.searchCat2(cat1Code);
 		size = cat2List.size();
@@ -59,7 +59,7 @@ public class SearchCategoryService implements Service{
 			System.out.println(" "+(i+1)+" : "+cat2List.get(i).getName());
 		}
 		
-		System.out.print(" 분류2 를 선택하세요 > ");
+		System.out.print(" 분류2 를 선택하세요 : ");
 		this.cat2Code = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(cat2Code) - 1;

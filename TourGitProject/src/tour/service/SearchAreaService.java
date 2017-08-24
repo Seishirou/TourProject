@@ -18,9 +18,9 @@ public class SearchAreaService implements Service{
 
 	@Override
 	public void execute(Scanner scan) {
-		System.out.println("===============================================");
-		System.out.println(" 시/도 검색");
-		System.out.println("===============================================");
+		System.out.println("============================================");
+		System.out.println("                시/도 검색                  ");
+		System.out.println("============================================");
 		int index = 0;
 		
 		List<AreaDto> areaList = TourDao.searchArea();
@@ -29,16 +29,16 @@ public class SearchAreaService implements Service{
 			System.out.printf(" %2d : %s\n",(i+1),areaList.get(i).getAreaName());
 			
 		}
-		System.out.print(" 시/도 를 선택하세요 > ");
+		System.out.print(" 시/도 를 선택하세요 : ");
 		this.areaCode = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(areaCode) - 1;
 		this.areaCode = areaList.get(index).getAreaCode();
 		this.areaName = areaList.get(index).getAreaName();
 		
-		System.out.println("===============================================");
-		System.out.println(" 시/군/구 검색");
-		System.out.println("===============================================");
+		System.out.println("============================================");
+		System.out.println("               시/군/구 검색                ");
+		System.out.println("============================================");
 		
 		List<SigunguDto> sigunguList = TourDao.searchSigungu(areaCode);
 		int size = sigunguList.size();
@@ -48,7 +48,7 @@ public class SearchAreaService implements Service{
 			System.out.printf(" %2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
 		}
 		
-		System.out.print(" 시/군/구 를 선택하세요 > ");
+		System.out.print(" 시/군/구 를 선택하세요 : ");
 		this.sigunguCode = scan.nextLine();
 		System.out.println();
 				

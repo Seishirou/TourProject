@@ -16,8 +16,8 @@ public class TourScoreSearchService implements Service{
       double sisul = 0.0;
       double food = 0.0;
       double etc = 0.0;
-      
-      System.out.println("'"+sts.getName()+"'"+"의 회원평가");
+      System.out.println("=============================================");
+      System.out.println("            '"+sts.getName()+"'" + "의 회원평가      ");
       
       List<TourscoreDto> list = TourscoreDao.getInstance().getInfo(sts.getContentID());
       int size = list.size();
@@ -30,7 +30,8 @@ public class TourScoreSearchService implements Service{
       }
       
       if(size==0){
-    	  System.out.println(" 회원 평가가 존재하지 않습니다. ");
+    	  System.out.println("        회원 평가가 존재하지 않습니다.       ");
+    	  System.out.println("=============================================");
       }else{
 //    	  System.out.printf(
 //    	            "-----------------------------------------------\n 교통 : %.1f\n 숙박 : %.1f\n 시설 : %.1f\n 음식 : %.1f\n 기타 : %.1f\n-----------------------------------------------\n",
