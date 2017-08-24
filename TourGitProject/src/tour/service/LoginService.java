@@ -39,8 +39,7 @@ public class LoginService implements Service {
 						System.out.println("등록된 ID가 없거나 비밀번호가 다릅니다");
 						break;
 					} else {
-						// String name = rs.getString("name");
-						System.out.println("환영합니다");
+						System.out.println(this.email + "환영합니다");
 						return;
 					}
 				} catch (NoSuchAlgorithmException e) {
