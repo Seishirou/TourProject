@@ -1,10 +1,10 @@
 package tour.dto;
 
 public class AreaDto {
-	
+
 	private String areaCode;
 	private String areaName;
-	
+
 	public AreaDto(String areaCode, String areaName) {
 		super();
 		this.areaCode = areaCode;
@@ -31,5 +31,5 @@ public class AreaDto {
 	public String toString() {
 		return "Area [areaCode=" + areaCode + ", areaName=" + areaName + "]";
 	}
-	
+
 }
