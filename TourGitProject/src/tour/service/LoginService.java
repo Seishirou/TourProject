@@ -1,8 +1,8 @@
 package tour.service;
 
 import java.security.NoSuchAlgorithmException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import tour.dao.LoginDao;
@@ -35,12 +35,14 @@ public class LoginService implements Service {
 				System.out.print("비밀번호 입력 : ");
 				String pwd = sc.nextLine();
 				try {
-					if (!LoginDao.login(email, pwd)) {
+					Iterator<Entry<String, Boolean>> it = LoginDao.login(email, pwd).entrySet().iterator();
+					Entry<String, Boolean> entry = it.next();
+					if (!entry.getValue()) {
 						System.out.println("등록된 ID가 없거나 비밀번호가 다릅니다");
 						break;
 					} else {
 						System.out.println("============================================");
-						System.out.println("      " + this.email + "환영합니다");
+						System.out.println("         " + entry.getKey() + "님 환영합니다");
 						return;
 					}
 				} catch (NoSuchAlgorithmException e) {

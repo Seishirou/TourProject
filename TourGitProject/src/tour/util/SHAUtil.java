@@ -42,7 +42,6 @@ public class SHAUtil {
 		String dbpw = "";
 		byte[] dbInpw = null;
 		MessageDigest sha1Receiver = MessageDigest.getInstance("SHA-256");
-		if (rs.next()) {
 			String salt = rs.getString("salt");
 			byte [] bytes = new byte[salt.length()/2];
 			for (int i = 0; i < bytes.length; i++) {
@@ -54,7 +53,6 @@ public class SHAUtil {
 			for (int i = 0; i < dbInpw.length; i++) {
 				dbInpw[i] = (byte)Integer.parseInt(dbpw.substring(2 * i, 2 * i + 2), 16);
 			}
-		}
 		byte[] sha1ReceiverText = sha1Receiver.digest(pwd.getBytes());
 		result = MessageDigest.isEqual(dbInpw, sha1ReceiverText);
 		return result;
