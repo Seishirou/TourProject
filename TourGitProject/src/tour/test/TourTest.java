@@ -27,9 +27,9 @@ public class TourTest {
 				new LoginService().execute(sc); // 로그인 실행
 				
 				while(!"0".equals(select)){
-					System.out.println("=============================================");
-					System.out.println("| 1.관광지 조회 | 2.관광지 평가 | 0.로그아웃|");
-					System.out.println("=============================================");
+					System.out.println("==============================================");
+					System.out.println("| 1.관광지 조회 | 2.관광지 평가 | 0.로그아웃 |");
+					System.out.println("==============================================");
 					System.out.print("메뉴를 선택하세요 : ");
 					select = sc.nextLine();
 					System.out.println();
