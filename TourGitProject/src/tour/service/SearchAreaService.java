@@ -18,18 +18,17 @@ public class SearchAreaService implements Service{
 
 	@Override
 	public void execute(Scanner scan) {
-		System.out.println(" ================================");
-		System.out.println("\t시/도 검색");
-		System.out.println(" ================================");
+		System.out.println("===============================================");
+		System.out.println(" 시/도 검색");
+		System.out.println("===============================================");
 		int index = 0;
 		
 		List<AreaDto> areaList = TourDao.searchArea();
 		for (int i = 0; i < areaList.size(); i++) {
 			if(!"x".equals( areaList.get(i).getAreaCode().trim() ))
-			System.out.printf("%2d : %s\n",(i+1),areaList.get(i).getAreaName());
+			System.out.printf(" %2d : %s\n",(i+1),areaList.get(i).getAreaName());
 			
 		}
-		System.out.println(" ================================");
 		System.out.print(" 시/도 를 선택하세요 > ");
 		this.areaCode = scan.nextLine();
 		System.out.println();
@@ -37,18 +36,17 @@ public class SearchAreaService implements Service{
 		this.areaCode = areaList.get(index).getAreaCode();
 		this.areaName = areaList.get(index).getAreaName();
 		
-		System.out.println(" ================================");
-		System.out.println("\t시/군/구 검색");
-		System.out.println(" ================================");
+		System.out.println("===============================================");
+		System.out.println(" 시/군/구 검색");
+		System.out.println("===============================================");
 		
 		List<SigunguDto> sigunguList = TourDao.searchSigungu(areaCode);
 		int size = sigunguList.size();
 		for (int i = 0; i < sigunguList.size() ; i++) {
 			if(!"x".equals( sigunguList.get(i).getSigunguCode().trim() ))
-			System.out.printf("%2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
+			System.out.printf(" %2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
 		}
-		System.out.printf("%2d : %s\n",size,"선택안함");
-		System.out.println(" ================================");
+		System.out.printf(" %2d : %s\n",size,"선택안함");
 		System.out.print(" 시/군/구 를 선택하세요 > ");
 		this.sigunguCode = scan.nextLine();
 		System.out.println();

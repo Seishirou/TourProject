@@ -7,41 +7,53 @@ import tour.service.JoinService;
 import tour.service.LoginService;
 import tour.service.SearchHistoryService;
 import tour.service.SearchTourService;
-import tour.service.SelectScanService;
-import tour.service.TourscoreInsertService;
 
 public class TourTest {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-		exit : while (true) {
+		String select = "";
+		while (true) {
 			System.out.println("1. 회원가입\n" + "2. 로그인\n" + "0. 종료\n");
 			System.out.print("메뉴를 선택하세요 > ");
+			select = sc.nextLine();
 			System.out.println();
-			String select = sc.nextLine();
+			
 			switch (select) {
 			case "1":
-				new JoinService().execute(sc);
+				new JoinService().execute(sc); // 회원가입 실행
 				break;
 			case "2":
-				new LoginService().execute(sc);
-				switch (new SelectScanService().select(sc)) {
-				case "1":
-					new SearchTourService().execute(sc);
-					break;
-				case "2":
-					new SearchHistoryService().execute(sc);
-					break;
-
-				default:
-					System.out.println("바른 숫자를 입력하여 주세요.");
-					break;
+				new LoginService().execute(sc); // 로그인 실행
+				
+				while(!"0".equals(select)){
+					System.out.println();
+					System.out.println("1. 관광지 조회\n" + "2. 관광지 평가\n"+ "0. 로그 아웃\n");
+					System.out.print("메뉴를 선택하세요 > ");
+					select = sc.nextLine();
+					System.out.println();
+					switch (select) {
+					case "1":
+						new SearchTourService().execute(sc);
+						break;
+					case "2":
+						new SearchHistoryService().execute(sc);
+						break;
+					case "0" :
+						System.out.println("로그 아웃 합니다.");
+						break;
+					default:
+						System.out.println("바른 숫자를 입력하여 주세요.");
+						break;
+					}
 				}
 				break;
-
+			case "0" :
+				System.out.println("프로그램을 종료합니다");
+				System.exit(0);
+				break;
+				
 			default:
-				if("0".equals(select))
-					System.exit(0);
 				System.out.println("바른 숫자를 입력하여 주세요.");
 				break;
 			}

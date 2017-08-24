@@ -35,10 +35,9 @@ public class SearchTourService implements Service {
    public void execute(Scanner scan) {
       String selectNum = "";
       Map<String, String> map = new HashMap<>();
-      
-      System.out.println(" ********************************");
-      System.out.println("\t관광 조회 서비스");
-      System.out.println(" ********************************");
+      System.out.println("***********************************************");
+      System.out.println(" 관광지 조회 서비스");
+      System.out.println("***********************************************");
       
       SearchAreaService sa = new SearchAreaService();
       sa.execute(scan);
@@ -62,16 +61,17 @@ public class SearchTourService implements Service {
       cat2Code = map.get("cat2Code");
       cat2Name = map.get("cat2Name");
       
-      System.out.println("  <선택항목>\n"+
+      System.out.println("===============================================");
+      System.out.println(" 선택하신 항목입니다.\n"+
                      "  시/도      : "+areaName+"\n"+
                      "  시/군/구 : "+sigunguName+"\n"+
                      "  관광타입 : "+typeName+"\n"+
                      "  분류 1   : "+cat1Name+"\n"+
                      "  분류 2   : "+cat2Name);
+      System.out.println("===============================================");
       
       List<TourDto> list = TourDao.searchTour(areaCode, sigunguCode, typeCode, cat1Code, cat2Code);
-      
-      
+      System.out.println();
       if(list.size()==0){
          System.out.println("검색 결과가 없습니다.");
       }else {
@@ -80,15 +80,15 @@ public class SearchTourService implements Service {
             TourDto t = list.get(j);
             System.out.println(
                   " <"+(index++)+">\n"+
-                  "------------------------------------------------\n"+
-                  "관광지명 : " + t.getTourName() +"\n"+
-                  "상세주소 : " + t.getAddr() +"\n"+
-                  "전화번호 : "+t.getTel() +"\n"+
-                  "------------------------------------------------\n"
+                  "-----------------------------------------------\n"+
+                  " 관광지명 : " + t.getTourName() +"\n"+
+                  " 상세주소 : " + t.getAddr() +"\n"+
+                  " 전화번호 : "+t.getTel() +"\n"+
+                  "-----------------------------------------------"
                   );
          }
       }
-      System.out.print("상세정보 보기 > ");
+      System.out.print(" 회원평가 보기 > ");
       String tourNum = scan.nextLine();
       System.out.println();
       this.contentID = list.get(Integer.parseInt(tourNum)-1).getContentID();

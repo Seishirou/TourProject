@@ -13,14 +13,11 @@ public class MemHistoryInsertService implements Service{
 		int recordnum = MemHistoryDao.getInstance().selectNum()+1;
 		String email=LoginService.getEmail();
 		String contentid = SearchTourService.getContentID();
-		System.out.println("Email : "+email);
-		System.out.println("Contentid : "+contentid);
 		int result = MemHistoryDao.getInstance().insert(new MemHistoryDto(recordnum, email, contentid));
-		if(result != 0) {
-			System.out.println("회원History Data 추가 성공");
-		}else {
-			System.out.println("실패");
-		}
+//		if(result != 0) {
+//			System.out.println("회원History Data 추가 성공");
+//		}else {
+//			System.out.println("실패");
+//		}
 	}
-
 }

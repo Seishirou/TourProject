@@ -41,7 +41,6 @@ public class TourscoreDao {
 			}else {
 				temp=0;
 			}
-			System.out.println(temp);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

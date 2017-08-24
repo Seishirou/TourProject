@@ -16,20 +16,20 @@ public class SearchHistoryService implements Service{
 		int index = 1;
 		
 		List<MemHistoryDto> list = MemHistoryDao.getInstance().getHistory(id);
+		System.out.println("***********************************************");
+		System.out.println(" 관광지 평가 서비스 (최근 조회 데이터)");
+		System.out.println("***********************************************");
 		
-		System.out.println("관광지 평가");
-		
-		if(list.size() >5 ){
-			for (int i = 0; i < 5 ; i++) {
-				System.out.println((index++)+". "+list.get(i).getTourName());
-			}
+		if(list.size() == 0 ){
+			System.out.println(" 조회된 관광지가 없습니다.");
 		}else {
 			for (int i = 0; i < list.size() ; i++) {
-				System.out.println((index++)+". "+list.get(i).getTourName());
+				System.out.println(" "+(index++)+". "+list.get(i).getTourName());
 			}
 		}
-		System.out.print("평가 항목 선택 > ");
+		System.out.print(" 평가할 관광지 선택 > ");
 		index = sc.nextInt(); sc.nextLine();
+		System.out.println();
 		
 		id = list.get(index-1).getEmail();
 		this.contentID = list.get(index-1).getContentid();
