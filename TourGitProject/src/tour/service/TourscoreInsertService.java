@@ -9,15 +9,23 @@ public class TourscoreInsertService implements Service {
 
 	@Override
 	public void execute(Scanner sc) {
-		// TODO Auto-generated method stub
+		SearchHistoryService shs = new SearchHistoryService();
 		int score_num = TourscoreDao.getInstance().selectNum()+1;
-		String contentid = SearchTourService.getContentID();
+		String contentid = shs.getContentID();
 		String email = LoginService.getEmail();
-		double traffic = sc.nextDouble();
-		double stay = sc.nextDouble();
-		double sisul = sc.nextDouble();
-		double food = sc.nextDouble();
-		double etc = sc.nextDouble();
+		
+		System.out.println("'"+shs.getTourName()+"'"+" 평가하기");
+		System.out.print("교통 > ");
+		double traffic = sc.nextDouble(); sc.nextLine();
+		System.out.print("숙박 > ");
+		double stay = sc.nextDouble(); sc.nextLine();
+		System.out.print("시설 > ");
+		double sisul = sc.nextDouble(); sc.nextLine();
+		System.out.print("음식 > ");
+		double food = sc.nextDouble(); sc.nextLine();
+		System.out.print("기타 > ");
+		double etc = sc.nextDouble(); sc.nextLine();
+		System.out.print("한줄 평 > ");
 		String assessment = sc.nextLine();
 		
 		int result=TourscoreDao.getInstance().insert(new TourscoreDto(score_num, contentid, email, traffic, stay, sisul, food, etc, assessment));

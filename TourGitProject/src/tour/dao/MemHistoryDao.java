@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 import tour.dto.MemHistoryDto;
 import tour.util.DBUtil;
@@ -73,4 +75,44 @@ public class MemHistoryDao {
 		return result;
 
 	}
+	
+	public List<MemHistoryDto> getHistory(String id){
+		List<MemHistoryDto> list = new LinkedList<>();
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select m.recordnum, m.id, m.contentid, t.tour_name"+
+				" from memberhistory m, tour t"+ 
+				" where m.id='"+id+"' and m.contentid=t.contentid"+
+				" order by recordnum";
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				list.add(new MemHistoryDto(
+						rs.getInt("recordnum"),
+						rs.getString("id"),
+						rs.getString("contentid"),
+						rs.getString("tour_name")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstmt, conn);
+		}
+		return list;
+	}
 }
+
+
+
+
+
+
+
+
+
+

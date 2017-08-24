@@ -5,6 +5,7 @@ import java.util.Scanner;
 import tour.service.AreaInsertService;
 import tour.service.JoinService;
 import tour.service.LoginService;
+import tour.service.SearchHistoryService;
 import tour.service.SearchTourService;
 import tour.service.SelectScanService;
 import tour.service.TourscoreInsertService;
@@ -35,7 +36,7 @@ public class TourTest {
 				new SearchTourService().execute(sc);
 				break;
 			case "2":
-				new TourscoreInsertService().execute(sc);
+				new SearchHistoryService().execute(sc);
 				break;
 
 			default:

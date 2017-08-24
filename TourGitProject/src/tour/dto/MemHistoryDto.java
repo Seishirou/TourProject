@@ -6,11 +6,27 @@ public class MemHistoryDto {
 	private String email="";
 	private String contentid;
 	
+	private String tourName;
+	
 	public MemHistoryDto(int recordnum, String email, String contentid) {
 		super();
 		this.recordnum = recordnum;
 		this.email = email;
 		this.contentid = contentid;
+	}
+	
+	public MemHistoryDto(int recordnum, String email, String contentid, String tourName) {
+		super();
+		this.recordnum = recordnum;
+		this.email = email;
+		this.contentid = contentid;
+		this.tourName = tourName;
+	}
+	public String getTourName(){
+		return tourName;
+	}
+	public void setTourName(String tourName){
+		this.tourName = tourName;
 	}
 	
 	public int getRecordnum() {
