@@ -22,16 +22,17 @@ public class SearchTypeService implements Service{
 		
 		List<TourTypeDto> typeList = TourDao.searchTourType();
 		int size = typeList.size();
+		System.out.println(" 0 : 선택안함");
 		for (int i = 0; i < typeList.size(); i++) {
 			if(!"x".equals( typeList.get(i).getTypeCode().trim() ))
 			System.out.println(" "+(i+1)+" : "+typeList.get(i).getTypeName());
 		}
-		System.out.println(" "+size+" : 선택안함");
+		
 		System.out.print(" 관광 타입을 선택하세요 > ");
 		this.typeCode = scan.nextLine();
 		System.out.println();
 		index = Integer.parseInt(typeCode) -1;
-		if((index+1)==size){
+		if( index == -1 ){
 			this.typeCode = "선택안함";
 			this.typeName = "선택안함";
 		}else {

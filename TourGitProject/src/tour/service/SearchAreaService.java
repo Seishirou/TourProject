@@ -42,17 +42,18 @@ public class SearchAreaService implements Service{
 		
 		List<SigunguDto> sigunguList = TourDao.searchSigungu(areaCode);
 		int size = sigunguList.size();
+		System.out.printf(" %2d : %s\n",0,"선택안함");
 		for (int i = 0; i < sigunguList.size() ; i++) {
 			if(!"x".equals( sigunguList.get(i).getSigunguCode().trim() ))
 			System.out.printf(" %2d : %s\n",(i+1),sigunguList.get(i).getSigunguName());
 		}
-		System.out.printf(" %2d : %s\n",size,"선택안함");
+		
 		System.out.print(" 시/군/구 를 선택하세요 > ");
 		this.sigunguCode = scan.nextLine();
 		System.out.println();
 				
 		index = Integer.parseInt(sigunguCode) - 1;
-		if( (index+1) == size ){
+		if( index == -1 ){
 			this.sigunguCode = "선택안함";
 			this.sigunguName = "선택안함";
 		}else{
