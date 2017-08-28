@@ -37,7 +37,6 @@ public class JoinDao {
 			cstmt.setString(7, list.get(0));
 			result = cstmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new MyException("회원 가입에 실패했습니다");
 		} finally {
 			DBUtil.close(cstmt, con);

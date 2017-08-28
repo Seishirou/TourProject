@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import tour.exception.MyException;
 import tour.util.DBUtil;
 import tour.util.SHAUtil;
 
@@ -32,7 +33,7 @@ public class LoginDao {
 			}
 			map.put(name, result);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new MyException("Error! - SQLException");
 		}
 		return map;
 	}
